@@ -1,5 +1,3 @@
-# Abstract
-
 How reliable is bioinformatics software? A challenge in determining the reliability and accuracy of many tools is that in the search for new knowledge, a ‘gold standard’ to test against does often not exist. Metamorphic testing can be used to overcome this issue by comparing the output of bioinformatics programs when input data is deliberately altered, as shown in recent work by Giannoulatou et al. [1]. Metamorphic testing can reveal errors and biases by discovering unexpected changes in program output [2].
 To encourage the use of metamorphic testing in bioinformatics, Mighty Morphin FASTA Files (MMFF) is an open source Python script and an accompanying web interface for generating biological test data in the common FASTA sequence file format.
 It is intended to complement other forms of testing on programs that use the FASTA file format. Various  metamorphic relationships (MRs) can be applied to a seed of test data to produce additional FASTA files for each MR. Changes to the file format, sequence header, sequence content (nucleotides or amino acids), and sequence order can each be applied, and the results compared to unmodified data.
