@@ -12,6 +12,7 @@ EXIT_FASTA_FILE_ERROR = 3
 DEFAULT_VERBOSE = False
 PROGRAM_NAME = "mmff"
 
+mmff_numeric_header_count = 0
 
 try:
     PROGRAM_VERSION = pkg_resources.require(PROGRAM_NAME)[0].version
@@ -19,6 +20,21 @@ except pkg_resources.DistributionNotFound:
     PROGRAM_VERSION = "undefined_version"
 
 
+def mmff_numeric_header(seq):
+    global mmff_numeric_header_count
+    new_seq = deepcopy(seq)
+    new_seq.id = str(mmff_numeric_header_count)
+    new_seq.name = str(mmff_numeric_header_count)
+    new_seq.description= str(mmff_numeric_header_count)
+    mmff_numeric_header_count = mmff_numeric_header_count+1
+    return new_seq
+
+
+def mmff_(seq):
+    new_seq = deepcopy(seq)
+    new_seq.id = str(mmff_numeric_header_count)
+    mmff_numeric_header_count = mmff_numeric_header_count+1
+    return new_seq
 
 
 def mmff_reverse(seq):
@@ -91,7 +107,8 @@ def mmff_from_file(fasta_file, morphs):
 
     morphs_dict={
     'reverse':mmff_reverse,
-    "passthrough": mmff_passthrough
+    "passthrough": mmff_passthrough,
+    'numeric_header': mmff_numeric_header
     }
     morphed_sequences= []
 
